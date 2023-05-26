@@ -13,7 +13,7 @@
                     <th>Description</th>
                     <th>Project owner</th>
                     <th>Project contributors</th>
-                    <th colspan="4">Languages</th>
+                    <th colspan="4">Language</th>
                 </tr>
             </thead>
             <tbody>
@@ -23,8 +23,8 @@
                         <td>{{ $project->description }}</td>
                         <td>{{ $project->owner }}</td>
                         <td>{{ $project->contributors }}</td>
-                        <td>{{ $project->$technologies?->id->implode('name',',')?: 'None' }}</td>
-                        <td><a href="{{ route('admin.projects.show', $project->id) }}" class="btn btn-success">Info</a></td>
+                        <td>{{ $project->languages}}</td>
+                        <td><a href="{{ route('admin.projects.show', $project->id) }}" class="btn btn-success ms-5">Info</a></td>
                         <td><a href="{{ route('admin.projects.edit', $project->id) }}" class="btn btn-warning">Edit</a></td>
                         <td>
                             <form action="{{ route('admin.projects.destroy', $project->id) }}" method="POST">

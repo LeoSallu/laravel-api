@@ -16,14 +16,14 @@ class ProjectTableSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        for ($i = 0; $i < 30; $i++) {
+        for ($i = 0; $i < 50; $i++) {
             $new_project = new Project();
             //Mapping
             $new_project->name = $faker->sentence();
             $new_project->description = $faker->text();
             $new_project->owner = $faker->word();
             $new_project->contributors = $faker->word();
-            $new_project->languages = $faker->randomElement(['Php', 'Javascript', 'Html & Css', 'MySQL']);
+            $new_project->languages = $faker->randomElement(['IT', 'EN', 'US', 'FR', 'ES', 'RU', 'JP']);
             //Save
             $new_project->save();
         }
