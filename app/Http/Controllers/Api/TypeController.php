@@ -10,6 +10,7 @@ class TypeController extends Controller
 {
    public function index(){
     $types=Type::all();
+    
     return response()->json([
         'success'=>true,
         'results'=>$types
@@ -17,7 +18,7 @@ class TypeController extends Controller
    }
 
    public function show($id){
-    $type=Type::find('id',$id)->with('projects')->first();
+    $type=Type::where('id', $id)->with('projects.technologies')->first();
     return response()->json([
         'success'=>true,
         'results'=>$type

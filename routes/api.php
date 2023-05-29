@@ -24,7 +24,7 @@ Route::get('projects',[ProjectController::class,'index']);
 
 Route::get('projects/{id}',[ProjectController::class,'show']);
 
-Route::get('types',[ApiTypeController::class,'index']);
+Route::get('types',[TypeController::class,'index']);
 
 Route::get('types/{id}',[TypeController::class,'show']);
 
