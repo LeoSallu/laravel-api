@@ -19,17 +19,24 @@ class ProjectController extends Controller
     public function show($id){
         $projects = Project::where('id', $id)->with('type', 'technologies')->first();
 
-
-        if ($projects) {
+        try{
+            if ($projects) {
+                return response()->json([
+                    'success' => true,
+                    'results' => $projects
+                ]);
+            } else {
+                return response()->json([
+                    'success' => false,
+                    'results' => null
+                ], 404);
+            }    
+        }
+        catch(\Throwable $th){
             return response()->json([
-                'success' => true,
-                'results' => $projects
-            ]);
-        } else {
-            return response()->json([
-                'success' => false,
-                'results' => null
-            ], 404);
+                'success'=>false,
+                'results'=>null
+            ],500);
         }
 
     }
