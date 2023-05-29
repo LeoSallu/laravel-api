@@ -16,14 +16,14 @@ class ProjectController extends Controller
             'results'=>$projects
         ]);
     }
-    public function show(string $id){
-        $project = Project::where('id', $id)->with('types', 'technologies')->first();
+    public function show($id){
+        $projects = Project::where('id', $id)->with('type', 'technologies')->first();
 
 
-        if ($project) {
+        if ($projects) {
             return response()->json([
                 'success' => true,
-                'results' => $project
+                'results' => $projects
             ]);
         } else {
             return response()->json([
