@@ -19,6 +19,10 @@
                     <th>Languages</th>
                     <th>Type</th>
                     <th>Technology</th>
+                    @if ($project->leads->count())
+                        <th>Lead author</th>
+                        <th>Lead text</th>
+                    @endif
                 </tr>
             </thead>
             <tbody>
@@ -34,6 +38,12 @@
                     @empty
                         <th>None technology</th>
                     @endforelse
+                    @if ($project->leads->count())
+                        @foreach ($project->leads as $lead)
+                            <th>{{ $lead->author }}</th>
+                            <th>{{ $lead->message }}</th>
+                        @endforeach
+                    @endif
 
                 </tr>
             </tbody>

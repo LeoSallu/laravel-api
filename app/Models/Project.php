@@ -19,7 +19,7 @@ class Project extends Model
         return $this->belongsToMany(Technology::class);
     }
     public function leads(){
-        return $this->belongsToMany(Lead::class);
+        return $this->hasMany(Lead::class);
     }
    
 }
