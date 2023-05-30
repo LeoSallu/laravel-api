@@ -8,5 +8,11 @@ use Illuminate\Http\Request;
 
 class LeadController extends Controller
 {
-    //
+    public function destroy(Lead $lead){
+
+        $project = $lead->project;
+        $lead->delete();
+
+        return to_route('admin.projects.show', $project);
+    }
 }

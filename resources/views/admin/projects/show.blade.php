@@ -45,6 +45,11 @@
                             <p>Author: {{ $lead->author }}</p>
                             <h6>Text:</h6>
                             <p>{{ $lead->message }}</p>
+                            <form action="{{ route('admin.leads.destroy', $lead) }}" method="POST">
+                                @method('DELETE')
+                                @csrf
+                                <button class="btn btn-danger btn-sm">Delete</button>
+                           </form>
                         @endforeach
                     </p>
                 </div>

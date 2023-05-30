@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\TypeController;
+use App\Http\Controllers\Admin\LeadController;
+use App\Http\Controllers\Admin\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,14 +32,9 @@ Route::middleware(['auth','verified'])
 ->group(function(){
     Route::resource('projects', ProjectController::class);
     Route::resource('types', TypeController::class);
+    Route::delete('leads/{lead}', [LeadController::class, 'destroy'])->name('leads.destroy');
 });
 
-// Route::middleware('auth')->group(function () {
-//     Route::resource('projects', ProjectController::class);
-// });
-// Route::middleware('auth')->group(function () {
-//     Route::resource('types', TypeController::class);
-// });
 
 
 require __DIR__.'/auth.php';
