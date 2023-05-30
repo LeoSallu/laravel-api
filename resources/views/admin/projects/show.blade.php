@@ -5,48 +5,50 @@
         <div class="header my-3">
             <a href="{{ route('admin.projects.index') }}" class="btn btn-danger">Back to the Projects</a>
         </div>
-        <h1>{{ $project->name }}</h1>
-        <div class="img_thumb">
-            <img src="{{ asset('storage/' . $project->image) }}" alt=" {{ $project->name }}">
-        </div>
-        <table class="table my-3">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Description</th>
-                    <th>Owner</th>
-                    <th>Contributors</th>
-                    <th>Languages</th>
-                    <th>Type</th>
-                    <th>Technology</th>
-                    @if ($project->leads->count())
-                        <th>Lead author</th>
-                        <th>Lead text</th>
-                    @endif
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th>{{ $project->type_id }}</th>
-                    <th>{{ $project->description }}</th>
-                    <th>{{ $project->owner }}</th>
-                    <th>{{ $project->contributors }}</th>
-                    <th>{{ $project->languages }}</th>
-                    <th>{{ $project->type?->type ?: 'None' }}</th>
-                    @forelse ($project->technologies as $technology)
-                        <th>{{ $technology->name }}</th>
-                    @empty
-                        <th>None technology</th>
-                    @endforelse
-                    @if ($project->leads->count())
+        @if ($project->image)
+            <div class="img_thumb">
+                <img src="{{ asset('storage/' . $project->image) }}" alt=" {{ $project->name }}">
+            </div>
+        @endif
+        <div class="container">
+            <h1>Project Title: {{ $project->name }}</h1>
+            <p>Type: {{ $project->type?->type ?: 'None' }}</p>
+            <div class="text-box">
+                <h3>Description:</h3>
+                <p>{{ $project->description }}</p>
+            </div>
+            <div class="text-box">
+                <h3>Project owner:</h3>
+                <p>{{ $project->owner }}</p>
+            </div>
+            <div class="text-box">
+                <h3>Project contributors:</h3>
+                <p>{{ $project->contributors }}</p>
+            </div>
+            <div class="text-box">
+                <h3>Project language:</h3>
+                <p>{{ $project->languages }}</p>
+            </div>
+            <div class="text-box">
+                <h3>Project technologies:</h3>
+                @forelse ($project->technologies as $technology)
+                    <p>{{ $technology->name }}</p>
+                @empty
+                    <p>None technology</p>
+                @endforelse
+            </div>
+            @if ($project->leads->count())
+                <div class="text-box">
+                    <h3>Lead :</h3>
+                    <p>
                         @foreach ($project->leads as $lead)
-                            <th>{{ $lead->author }}</th>
-                            <th>{{ $lead->message }}</th>
+                            <p>Author: {{ $lead->author }}</p>
+                            <h6>Text:</h6>
+                            <p>{{ $lead->message }}</p>
                         @endforeach
-                    @endif
-
-                </tr>
-            </tbody>
-        </table>
+                    </p>
+                </div>
+            @endif
+        </div>
     </div>
 @endsection
