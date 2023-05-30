@@ -41,6 +41,7 @@
                 <div class="text-box">
                     <h3>Lead :</h3>
                     <p>
+                        <hr>
                         @foreach ($project->leads as $lead)
                             <p>Author: {{ $lead->author }}</p>
                             <h6>Text:</h6>
@@ -50,6 +51,7 @@
                                 @csrf
                                 <button class="btn btn-danger btn-sm">Delete</button>
                            </form>
+                           <hr>
                         @endforeach
                     </p>
                 </div>

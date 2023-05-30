@@ -1,7 +1,7 @@
 <?php
-
-use App\Http\Controllers\Api\ProjectController;
 use App\Http\Controllers\Api\TypeController;
+use App\Http\Controllers\Api\LeadController;
+use App\Http\Controllers\Api\ProjectController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -27,6 +27,8 @@ Route::get('projects/{id}',[ProjectController::class,'show']);
 Route::get('types',[TypeController::class,'index']);
 
 Route::get('types/{id}',[TypeController::class,'show']);
+
+Route::post('leads',[LeadController::class,'store']);
 
 
 
